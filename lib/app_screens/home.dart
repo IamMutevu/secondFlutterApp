@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class Home extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
@@ -72,7 +73,8 @@ class Home extends StatelessWidget{
               ],
             ),
             FlightImageAsset(),
-            FlightBookButton()
+            FlightBookButton(),
+            FlightsViewButton()
           ],
         )
       )
@@ -119,6 +121,33 @@ class FlightBookButton extends StatelessWidget{
       }
     }
 
+
+class FlightsViewButton extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Container(
+      margin: EdgeInsets.only(top: 30.0),
+      height: 50.0,
+      width: 250.0,
+      child: RaisedButton(
+          color: Colors.blue,
+          child: Text(
+            "Flights",
+            style: TextStyle(
+                fontFamily: "Raleway",
+                fontSize: 20.0,
+                color: Colors.white,
+                fontWeight: FontWeight.w700
+            ),
+          ),
+          elevation: 6.0,
+          onPressed: (){
+
+          }),
+    );
+  }
+}
     void bookFlight(BuildContext context){
       var alertDialog = AlertDialog(
         title: Text("Flight booked successfully"),
