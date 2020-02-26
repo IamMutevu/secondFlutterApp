@@ -8,6 +8,7 @@ void main(){
   runApp(MaterialApp(
     title: "Exploring UI widgets",
     home: FavoriteCity(),
+    debugShowCheckedModeBanner: false,
   ));
 
 

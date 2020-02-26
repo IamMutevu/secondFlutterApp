@@ -12,6 +12,9 @@ class FavoriteCity extends StatefulWidget{
 class _FavoriteCityState extends State<FavoriteCity>{
 
   String nameCity = "";
+  var _currencies = ['Rupees', 'Dollar', 'KES', 'Others'];
+  var _currentItemSelected = 'Rupees';
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -22,6 +25,13 @@ class _FavoriteCityState extends State<FavoriteCity>{
           padding: EdgeInsets.only(left: 10.0, right: 10.0),
           child: Column(
             children: <Widget>[
+              Padding(
+                padding: EdgeInsets.all(30.0),
+                child: Text(
+                  "Type your favorite city",
+                  style: TextStyle(fontSize: 16.0, fontFamily: "Raleway"),
+                ),
+              ),
               TextField(
                 onSubmitted: (String userInput){
                   setState(() {
@@ -30,6 +40,25 @@ class _FavoriteCityState extends State<FavoriteCity>{
 
                 },
               ),
+              Padding(
+                padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                child: DropdownButton<String>(
+
+                  items: _currencies.map((String dropDownStringItem){
+                    return DropdownMenuItem<String>(
+                      value: dropDownStringItem,
+                      child: Text(dropDownStringItem),
+                    );
+                  }).toList(),
+
+                  onChanged: (String newValueSelected){
+                    _newItemSelected(newValueSelected);
+                  },
+
+                  value: _currentItemSelected,
+                ),
+              ),
+
               Padding(
                   padding: EdgeInsets.all(30.0),
                   child:Text(
@@ -43,5 +72,9 @@ class _FavoriteCityState extends State<FavoriteCity>{
     );
   }
 
-
+  void _newItemSelected(String newValueSelected){
+    setState(() {
+      this._currentItemSelected = newValueSelected;
+    });
+  }
 }
